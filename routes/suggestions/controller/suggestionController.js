@@ -8,11 +8,9 @@ async function getAllSuggestions(req, res) {
     } catch (e) {
         res.status(500).json({message: "failure", error: e.message });
     }
-}
-
+};
 
 // - getSingleSuggestion - get one suggestion based on id using parameters
-
 async function getSingleSuggestion(req, res) {
     try {
         let singleSuggestion = await Suggestion.findById(req.params.id);
@@ -20,11 +18,9 @@ async function getSingleSuggestion(req, res) {
     } catch (e) {
         res.status(500).json({message: "failure", error: e.message });
     }
-}
-
+};
 
 // - createSuggestion- does not need id or time from user
-
 async function createSuggestion(req, res) {
     const { title, author, suggestion, likes, anonymous } = req.body;
 
@@ -47,16 +43,26 @@ async function createSuggestion(req, res) {
         console.log(e.message)
         res.status(500).json({message: "failure", error: e.message })
     }
-}
-
+};
 
 // - updateSuggestion- user can only update title and suggestion
+
 // - deleteSuggestion - suggestion deletes based on id
+async function deleteSuggestion(req, res) {
+    try{
+        let deletedSuggestion = await Suggestion.findByIdAndRemove(req.params.id);
+
+        res.json({ message: "Success", deletedSuggestion});
+        
+    } catch (e) {
+        res.status(500).json({message: "failure", error: e.message })
+    };
+}
 
 module.exports = { 
     getAllSuggestions,
     getSingleSuggestion,
     createSuggestion,
     // updateSuggestion,
-    // deleteSuggestion,
+    deleteSuggestion,
 }

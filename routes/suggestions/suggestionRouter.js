@@ -5,7 +5,7 @@ const {
   getSingleSuggestion,
   createSuggestion,
   // updateSuggestion,
-  // deleteSuggestion,
+  deleteSuggestion,
 } = require("./controller/suggestionController");
 
 /* GET users listing. */
@@ -21,5 +21,8 @@ router.get("/single-suggestion/:id", getSingleSuggestion)
 
 // create a suggestion
 router.post("/create-suggestion", createSuggestion);
+
+//delete a suggestion
+router.delete("/delete-suggestion/:id", deleteSuggestion);
 
 module.exports = router;

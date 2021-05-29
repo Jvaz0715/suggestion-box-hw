@@ -4,7 +4,7 @@ const {
   getAllSuggestions,
   getSingleSuggestion,
   createSuggestion,
-  // updateSuggestion,
+  updateSuggestion,
   deleteSuggestion,
 } = require("./controller/suggestionController");
 
@@ -21,6 +21,10 @@ router.get("/single-suggestion/:id", getSingleSuggestion)
 
 // create a suggestion
 router.post("/create-suggestion", createSuggestion);
+
+//update a suggestion
+
+router.put("/update-suggestion/:id", updateSuggestion)
 
 //delete a suggestion
 router.delete("/delete-suggestion/:id", deleteSuggestion);

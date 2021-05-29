@@ -47,13 +47,24 @@ async function createSuggestion(req, res) {
 
 // - updateSuggestion- user can only update title and suggestion
 
+async function updateSuggestion(req, res) {
+    try{
+        
+        let updatedSuggestion = await Suggestion.findByIdAndUpdate(req.params.id, req.body);
+
+        res.json({message: "Success", updatedSuggestion});
+    } catch (e) {
+        res.status(500).json({message: "failure", error: e.message });
+    }
+}
+
 // - deleteSuggestion - suggestion deletes based on id
 async function deleteSuggestion(req, res) {
     try{
         let deletedSuggestion = await Suggestion.findByIdAndRemove(req.params.id);
 
         res.json({ message: "Success", deletedSuggestion});
-        
+
     } catch (e) {
         res.status(500).json({message: "failure", error: e.message })
     };
@@ -63,6 +74,6 @@ module.exports = {
     getAllSuggestions,
     getSingleSuggestion,
     createSuggestion,
-    // updateSuggestion,
+    updateSuggestion,
     deleteSuggestion,
 }

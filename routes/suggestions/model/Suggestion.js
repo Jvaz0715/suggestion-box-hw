@@ -10,6 +10,7 @@ const suggestionSchema = new mongoose.Schema({
     author: {
         type: String,
         lowercase: true,
+        unmodifiable: true,
     },
     suggestion: {
         type: String,
@@ -19,6 +20,7 @@ const suggestionSchema = new mongoose.Schema({
     likes: {
         type: Number,
         default: 0,
+        unmodifiable: true,
     },
     anonymous: {
         type: Boolean,
@@ -26,6 +28,7 @@ const suggestionSchema = new mongoose.Schema({
     timeCreated: {
         type: Date,
         default: Date.now(),
+        unmodifiable: true,
     },
 });
 

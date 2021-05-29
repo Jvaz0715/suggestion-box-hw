@@ -12,6 +12,17 @@ async function getAllSuggestions(req, res) {
 
 
 // - getSingleSuggestion - get one suggestion based on id using parameters
+
+async function getSingleSuggestion(req, res) {
+    try {
+        let singleSuggestion = await Suggestion.findById(req.params.id);
+        res.json({message: "success", singleSuggestion});
+    } catch (e) {
+        res.status(500).json({message: "failure", error: e.message });
+    }
+}
+
+
 // - createSuggestion- does not need id or time from user
 
 async function createSuggestion(req, res) {
@@ -44,7 +55,7 @@ async function createSuggestion(req, res) {
 
 module.exports = { 
     getAllSuggestions,
-    // getSingleSuggestion,
+    getSingleSuggestion,
     createSuggestion,
     // updateSuggestion,
     // deleteSuggestion,

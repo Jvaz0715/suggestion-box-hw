@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const {
   getAllSuggestions,
-  // getSingleSuggestion,
+  getSingleSuggestion,
   createSuggestion,
   // updateSuggestion,
   // deleteSuggestion,
@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 router.get("/all-suggestions", getAllSuggestions);
 
 //get single suggestion
+router.get("/single-suggestion/:id", getSingleSuggestion)
 
 // create a suggestion
 router.post("/create-suggestion", createSuggestion);
